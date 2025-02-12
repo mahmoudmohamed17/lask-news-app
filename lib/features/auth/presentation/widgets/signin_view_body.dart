@@ -16,10 +16,12 @@ class SigninViewBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Sigin',
-              style: Styles.bold40,
-              textAlign: TextAlign.center,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Welcome back!',
+                style: Styles.semiBold32,
+              ),
             ),
             verticalSpace(32),
             CustomTextFormField(hintText: 'Email'),
@@ -38,4 +40,3 @@ class SigninViewBody extends StatelessWidget {
     );
   }
 }
-

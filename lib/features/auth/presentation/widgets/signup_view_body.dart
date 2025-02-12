@@ -19,12 +19,13 @@ class SignupViewBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            verticalSpace(context.height * 0.15),
+            verticalSpace(context.height * 0.09),
+            
             ImagePickingWidget(),
             verticalSpace(32),
             Text(
               'Create Account',
-              style: Styles.bold40,
+              style: Styles.semiBold32,
               textAlign: TextAlign.center,
             ),
             verticalSpace(32),

@@ -16,7 +16,7 @@ class AskAboutAccount extends StatelessWidget {
       children: [
         Text(
           'Don\'t have an account?',
-          style: Styles.regular18,
+          style: Styles.regular14,
         ),
         GestureDetector(
           onTap: () {
@@ -24,7 +24,7 @@ class AskAboutAccount extends StatelessWidget {
           },
           child: Text(
             'Create Account',
-            style: Styles.regular18
+            style: Styles.regular14
                 .copyWith(decoration: TextDecoration.underline),
           ),
         ),
