@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "220640491125",
+    "project_id": "lask-news-app",
+    "storage_bucket": "lask-news-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220640491125:android:d6f48bc891d733e40eea3c",
+        "android_client_info": {
+          "package_name": "com.example.lask_news_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBEIfrJeCUdw19E_nQq15cegMvKSNfLDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
