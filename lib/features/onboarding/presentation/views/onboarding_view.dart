@@ -4,7 +4,7 @@ import 'package:lask_news_app/features/onboarding/presentation/widgets/on_boardi
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
-  static String id = Routes.onboarding;
+  static const String id = Routes.onboarding;
 
   @override
   Widget build(BuildContext context) {

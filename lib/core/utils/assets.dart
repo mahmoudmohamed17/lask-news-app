@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesArrowRight
+  /// assets/images/arrow-right.svg
+  static const String imagesArrowRight = "assets/images/arrow-right.svg";
+
   /// Assets for imagesBookmark
   /// assets/images/bookmark.svg
   static const String imagesBookmark = "assets/images/bookmark.svg";
@@ -15,8 +19,8 @@ class Assets {
   static const String imagesHome = "assets/images/home.svg";
 
   /// Assets for imagesOnboarding
-  /// assets/images/onboarding.svg
-  static const String imagesOnboarding = "assets/images/onboarding.svg";
+  /// assets/images/onboarding.png
+  static const String imagesOnboarding = "assets/images/onboarding.png";
 
   /// Assets for imagesSplash
   /// assets/images/splash.png

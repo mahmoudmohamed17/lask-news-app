@@ -18,6 +18,11 @@ class Styles {
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle regular18 = const TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
 
   static TextStyle semiBold14 = const TextStyle(
     fontFamily: 'Inter',
