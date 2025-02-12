@@ -14,6 +14,7 @@ dependencies:
   flutter_bloc: ^9.0.0
   dio: ^5.8.0+1
   persistent_bottom_nav_bar: ^6.2.1
+  another_flushbar: ^1.12.30
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -26,6 +27,9 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter/static/Inter_18pt-Regular.ttf
+    - family: Merriweather
+      fonts:
+        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
 flutter_assets:
   assets_path: assets/images/
   output_path: lib/core/utils/

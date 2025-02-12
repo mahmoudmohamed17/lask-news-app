@@ -66,4 +66,14 @@ class Styles {
     fontSize: 48,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle regular16 = const TextStyle(
+    fontFamily: 'Merriweather',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle bold16 = const TextStyle(
+    fontFamily: 'Merriweather',
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
 }
