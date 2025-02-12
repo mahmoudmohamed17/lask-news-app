@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
@@ -14,10 +15,11 @@ class SignupViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Center(
+      child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            verticalSpace(context.height * 0.15),
             ImagePickingWidget(),
             verticalSpace(32),
             Text(
@@ -38,7 +40,6 @@ class SignupViewBody extends StatelessWidget {
                 context.pushNamed(Routes.signupView);
               },
             ),
-            verticalSpace(48),
           ],
         ),
       ),

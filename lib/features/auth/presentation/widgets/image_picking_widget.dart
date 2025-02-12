@@ -17,7 +17,6 @@ class _ImagePickingWidgetState extends State<ImagePickingWidget> {
   @override
   void initState() {
     _imagePicker = ImagePicker();
-
     super.initState();
   }
 
@@ -28,6 +27,7 @@ class _ImagePickingWidgetState extends State<ImagePickingWidget> {
       setState(() {
         _imageFile = File(image.path);
       });
+      
     }
   }
 

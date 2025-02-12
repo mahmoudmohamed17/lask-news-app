@@ -8,4 +8,4 @@ const newsItemDetailsBorder = 32.00;
 const onboardingTitle = 'Get The Latest News And Updates';
 const onboardingSubTitle =
     'From Politics to Entertainment: Your One-Stop Source for Comprehensive Coverage of the Latest News and Developments Across the Glob will be right on your hand.';
-
+const savedImage = 'saved_image';
