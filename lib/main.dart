@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/app_routes.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/firebase_options.dart';
@@ -9,6 +10,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await SharedPrefs.init();
   runApp(const MyApp());
 }
 
