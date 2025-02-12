@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Styles {
   static TextStyle regular12 = const TextStyle(
     fontFamily: 'Inter',
