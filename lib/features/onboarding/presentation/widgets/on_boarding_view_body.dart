@@ -65,7 +65,7 @@ class OnBoardingViewBody extends StatelessWidget {
                 CustomButton(
                     label: 'Explore',
                     onPressed: () {
-                      context.pushReplacementNamed(Routes.mainView);
+                      context.pushReplacementNamed(Routes.signinView);
                     }),
                 verticalSpace(16),
               ],
