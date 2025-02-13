@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 class CustomLoadingIndicator extends StatelessWidget {
@@ -7,15 +8,23 @@ class CustomLoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-        height: 70,
-        width: 70,
-        child: LoadingIndicator(
-          indicatorType: Indicator.lineScale,
-          strokeWidth: 4,
-          backgroundColor: Colors.transparent,
-          colors: [Colors.black],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 8,
+        children: [
+          SizedBox(
+            height: 70,
+            width: 70,
+            child: LoadingIndicator(
+              indicatorType: Indicator.lineScale,
+              strokeWidth: 4,
+              backgroundColor: Colors.transparent,
+              colors: [Colors.black],
+            ),
+          ),
+          Text('Loading...', style: Styles.semiBold16,),
+        ],
       ),
     );
   }

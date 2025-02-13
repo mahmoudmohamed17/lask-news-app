@@ -18,7 +18,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignupSuccess) {
           context.pushNamed(Routes.mainView);
-          snackBar(context, 'Account created successfuly');
+          snackBar(context, 'Account created successfuly!');
         }
         if (state is SignupFailed) {
           snackBar(context, state.message);

@@ -18,7 +18,7 @@ class SigininViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SigninSuccess) {
           context.pushNamed(Routes.mainView);
-          snackBar(context, 'Signed in successfully');
+          snackBar(context, 'Signed in successfully!');
         }
         if (state is SigninFailed) {
           snackBar(context, state.message);
