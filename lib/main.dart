@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lask_news_app/core/services/get_it_service.dart';
 import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/app_routes.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
+import 'package:lask_news_app/custom_bloc_observer.dart';
 import 'package:lask_news_app/firebase_options.dart';
 
 void main() async {
@@ -11,6 +14,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await SharedPrefs.init();
+  getIteService();
+  Bloc.observer = CustomBlocObserver();
   runApp(const MyApp());
 }
 

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:lask_news_app/core/errors/custom_exception.dart';
 import 'package:lask_news_app/core/errors/failure.dart';
 import 'package:lask_news_app/core/services/firebase_auth_service.dart';
+import 'package:lask_news_app/features/auth/data/models/user_model.dart';
 import 'package:lask_news_app/features/auth/domain/entities/user_entity.dart';
 import 'package:lask_news_app/features/auth/domain/repositories/auth_repo.dart';
 
@@ -16,7 +17,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user =
           await firebaseAuthService.signIn(email: email, password: password);
-      return right(UserEntity.fromJson(user));
+      return right(UserModel.fromFirebase(user));
     } on CustomException catch (e) {
       return left(FirebaseServerFailure(message: e.message));
     }
@@ -28,7 +29,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user =
           await firebaseAuthService.signUp(email: email, password: password);
-      return right(UserEntity.fromJson(user));
+      return right(UserModel.fromFirebase(user));
     } on CustomException catch (e) {
       return left(FirebaseServerFailure(message: e.message));
     }

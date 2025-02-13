@@ -34,7 +34,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           return null;
         }
       },
-      obscureText: isVisible,
+      obscureText: widget.hintText == 'Password' ? isVisible : false,
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
         suffixIcon: (widget.hintText == 'Password')

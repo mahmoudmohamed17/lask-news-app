@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lask_news_app/core/errors/custom_exception.dart';
 
@@ -8,6 +10,7 @@ class FirebaseAuthService {
           .signInWithEmailAndPassword(email: email, password: password);
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log('An error with signIn in FirebaseAuthService ==> $e');
       if (e.code == 'user-not-found') {
         throw CustomException(message: 'The user is not found.');
       } else if (e.code == 'wrong-password') {
@@ -29,6 +32,8 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log('An error with signUp in FirebaseAuthService ==> $e');
+
       if (e.code == 'weak-password') {
         throw CustomException(message: 'Weak password, try a strong one.');
       } else if (e.code == 'email-already-in-use') {
