@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
+import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/core/utils/snack_bar.dart';
 import 'package:lask_news_app/core/widgets/custom_loading_indicator.dart';
@@ -19,6 +21,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
         if (state is SignupSuccess) {
           context.pushNamed(Routes.mainView);
           snackBar(context, 'Account created successfuly!');
+          SharedPrefs.setBool(isUserAuthenticaed, true);
         }
         if (state is SignupFailed) {
           snackBar(context, state.message);

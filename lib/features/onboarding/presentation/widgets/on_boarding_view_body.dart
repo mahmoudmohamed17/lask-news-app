@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
+import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
@@ -42,7 +43,7 @@ class OnBoardingViewBody extends StatelessWidget {
                   topRight: Radius.circular(newsItemDetailsBorder)),
             ),
             padding: EdgeInsets.symmetric(
-              horizontal: horizonalOthersPadding,
+              horizontal: horizonalOnboardingPadding,
             ),
             child: Column(
               spacing: 16,
@@ -64,8 +65,9 @@ class OnBoardingViewBody extends StatelessWidget {
                 verticalSpace(8),
                 CustomButton(
                     label: 'Explore',
-                    onPressed: () {
+                    onPressed: () async {
                       context.pushReplacementNamed(Routes.signinView);
+                      await SharedPrefs.setBool(isOnboardingSeen, true);
                     }),
                 verticalSpace(16),
               ],

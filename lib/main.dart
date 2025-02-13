@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lask_news_app/core/funcs/check_app_flow.dart';
 import 'package:lask_news_app/core/services/get_it_service.dart';
 import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/app_routes.dart';
-import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/custom_bloc_observer.dart';
 import 'package:lask_news_app/firebase_options.dart';
 
@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.onboardingView,
+      initialRoute:
+          checkAppFlow(), // to avoid view onboarding and auth every time I open the app
       onGenerateRoute: AppRoutes.onGeneratedRoute,
     );
   }

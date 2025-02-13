@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
+import 'package:lask_news_app/features/home/presentation/views/home_view_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class MainView extends StatefulWidget {
@@ -52,9 +53,7 @@ class _MainViewState extends State<MainView> {
 
   List<Widget> _buildScreens() {
     return [
-      Center(
-        child: Text('Home'),
-      ),
+      HomeViewWidget(),
       Center(
         child: Text('Explore'),
       ),
