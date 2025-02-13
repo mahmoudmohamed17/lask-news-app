@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/services/shared_prefs.dart';
-import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/core/utils/snack_bar.dart';
 import 'package:lask_news_app/core/widgets/custom_loading_indicator.dart';
 import 'package:lask_news_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:lask_news_app/features/auth/presentation/widgets/signup_view_body.dart';
+import 'package:lask_news_app/main_view.dart';
 
 class SignupViewBodyBlocConsumer extends StatelessWidget {
   const SignupViewBodyBlocConsumer({
@@ -19,7 +19,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state is SignupSuccess) {
-          context.pushNamed(Routes.mainView);
+          context.pushNamed(MainView.id);
           snackBar(context, 'Account created successfuly!');
           SharedPrefs.setBool(isUserAuthenticaed, true);
         }

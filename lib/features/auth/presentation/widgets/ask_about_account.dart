@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
-import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
+import 'package:lask_news_app/features/auth/presentation/views/signup_view.dart';
 
 class AskAboutAccount extends StatelessWidget {
   const AskAboutAccount({
@@ -20,7 +20,7 @@ class AskAboutAccount extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            context.pushNamed(Routes.signupView);
+            context.pushNamed(SignupView.id);
           },
           child: Text(
             'Create Account',

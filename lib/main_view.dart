@@ -69,13 +69,13 @@ class _MainViewState extends State<MainView> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.house),
-        title: ("Home"),
-        activeColorPrimary: Colors.black,
-        activeColorSecondary: Colors.black,
-        inactiveColorPrimary: Colors.black,
-        inactiveColorSecondary: Colors.transparent,
-      ),
+          icon: Icon(FontAwesomeIcons.house),
+          title: ("Home"),
+          activeColorPrimary: Colors.black,
+          activeColorSecondary: Colors.black,
+          inactiveColorPrimary: Colors.black,
+          inactiveColorSecondary: Colors.transparent,
+          routeAndNavigatorSettings: RouteAndNavigatorSettings()),
       PersistentBottomNavBarItem(
         icon: Icon(FontAwesomeIcons.earthAmericas),
         title: ("Explore"),

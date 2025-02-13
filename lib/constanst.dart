@@ -1,6 +1,4 @@
 const horizonalPadding = 16.00;
-const horizonalOnboardingPadding = 16.00;
-
 const newsItemBorder = 8.00;
 const exploreButtonItemBorder = 100.00;
 const textFieldBorder = 8.00;

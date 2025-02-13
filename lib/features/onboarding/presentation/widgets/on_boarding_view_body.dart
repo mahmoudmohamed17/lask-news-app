@@ -4,10 +4,10 @@ import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
-import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:lask_news_app/core/widgets/custom_button.dart';
+import 'package:lask_news_app/features/auth/presentation/views/signin_view.dart';
 
 class OnBoardingViewBody extends StatelessWidget {
   const OnBoardingViewBody({super.key});
@@ -43,7 +43,7 @@ class OnBoardingViewBody extends StatelessWidget {
                   topRight: Radius.circular(newsItemDetailsBorder)),
             ),
             padding: EdgeInsets.symmetric(
-              horizontal: horizonalOnboardingPadding,
+              horizontal: horizonalPadding,
             ),
             child: Column(
               spacing: 16,
@@ -66,7 +66,7 @@ class OnBoardingViewBody extends StatelessWidget {
                 CustomButton(
                     label: 'Explore',
                     onPressed: () async {
-                      context.pushReplacementNamed(Routes.signinView);
+                      context.pushReplacementNamed(SigninView.id);
                       await SharedPrefs.setBool(isOnboardingSeen, true);
                     }),
                 verticalSpace(16),
