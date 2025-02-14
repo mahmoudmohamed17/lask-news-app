@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
+import 'package:lask_news_app/core/utils/weather_manager.dart';
+import 'package:lask_news_app/features/home/presentation/widgets/current_weather_widget.dart';
 
 class HomeViewAppBar extends StatelessWidget {
   const HomeViewAppBar({super.key});
@@ -14,10 +15,7 @@ class HomeViewAppBar extends StatelessWidget {
           'Live News',
           style: Styles.semiBold18,
         ),
-        Icon(
-          FontAwesomeIcons.bell,
-          color: Colors.black,
-        ),
+        CurrentWeatherWidget(weatherModel: WeatherManager.weatherModel),
       ],
     );
   }

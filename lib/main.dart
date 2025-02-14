@@ -5,6 +5,7 @@ import 'package:lask_news_app/core/funcs/check_app_flow.dart';
 import 'package:lask_news_app/core/services/get_it_service.dart';
 import 'package:lask_news_app/core/services/shared_prefs.dart';
 import 'package:lask_news_app/core/utils/app_routes.dart';
+import 'package:lask_news_app/core/utils/weather_manager.dart';
 import 'package:lask_news_app/custom_bloc_observer.dart';
 import 'package:lask_news_app/firebase_options.dart';
 
@@ -14,6 +15,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await SharedPrefs.init();
+  await WeatherManager.getWeather();
   getIteService();
   Bloc.observer = CustomBlocObserver();
   runApp(const MyApp());

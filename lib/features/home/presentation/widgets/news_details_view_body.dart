@@ -20,7 +20,7 @@ class NewsDetailsViewBody extends StatelessWidget {
             alignment: Alignment.topCenter,
           ),
         ),
-        // The CustomScrollView is actaully fill the whole screen
+        // Note: The CustomScrollView is actaully filling the whole screen
         CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -32,8 +32,7 @@ class NewsDetailsViewBody extends StatelessWidget {
               ),
             ),
             SliverFillRemaining(
-              hasScrollBody: true,
-              fillOverscroll: true,
+              hasScrollBody: false,
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
