@@ -11,7 +11,7 @@ class CustomLoadingIndicator extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 8,
+        spacing: 10,
         children: [
           SizedBox(
             height: 70,

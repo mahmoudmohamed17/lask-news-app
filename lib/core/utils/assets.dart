@@ -6,9 +6,13 @@ class Assets {
   /// assets/images/arrow-right.svg
   static const String imagesArrowRight = "assets/images/arrow-right.svg";
 
-  /// Assets for imagesBookmark
-  /// assets/images/bookmark.svg
-  static const String imagesBookmark = "assets/images/bookmark.svg";
+  /// Assets for imagesClear
+  /// assets/images/clear.png
+  static const String imagesClear = "assets/images/clear.png";
+
+  /// Assets for imagesCloudy
+  /// assets/images/cloudy.png
+  static const String imagesCloudy = "assets/images/cloudy.png";
 
   /// Assets for imagesExplore
   /// assets/images/explore.svg
@@ -26,9 +30,17 @@ class Assets {
   /// assets/images/onboarding.png
   static const String imagesOnboarding = "assets/images/onboarding.png";
 
+  /// Assets for imagesRainy
+  /// assets/images/rainy.png
+  static const String imagesRainy = "assets/images/rainy.png";
+
   /// Assets for imagesShare
   /// assets/images/share.svg
   static const String imagesShare = "assets/images/share.svg";
+
+  /// Assets for imagesSnow
+  /// assets/images/snow.png
+  static const String imagesSnow = "assets/images/snow.png";
 
   /// Assets for imagesSplash
   /// assets/images/splash.png
@@ -37,6 +49,10 @@ class Assets {
   /// Assets for imagesTestImage
   /// assets/images/test_image.png
   static const String imagesTestImage = "assets/images/test_image.png";
+
+  /// Assets for imagesThunderstorm
+  /// assets/images/thunderstorm.png
+  static const String imagesThunderstorm = "assets/images/thunderstorm.png";
 
   /// Assets for imagesUser
   /// assets/images/user.svg
