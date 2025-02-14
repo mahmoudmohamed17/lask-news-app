@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
+import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 
 class NewsDetailsViewBody extends StatelessWidget {
@@ -14,34 +15,61 @@ class NewsDetailsViewBody extends StatelessWidget {
         Positioned.fill(
           child: Image.asset(
             Assets.imagesTestImage,
-            fit: BoxFit.cover,
+            height: 250,
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.topCenter,
           ),
         ),
+        // The CustomScrollView is actaully fill the whole screen
         CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 300,
+              automaticallyImplyLeading: false,
+              expandedHeight: 250,
               backgroundColor: Colors.transparent,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(),
               ),
             ),
             SliverFillRemaining(
+              hasScrollBody: true,
+              fillOverscroll: true,
               child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(horizonalPadding),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(newsItemDetailsBorder),
                         topRight: Radius.circular(newsItemDetailsBorder))),
+                padding: EdgeInsets.all(horizonalPadding),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('See How the Forest is Helping Our World',
-                    textAlign: TextAlign.start,
+                        textAlign: TextAlign.start,
                         style: Styles.semiBold32
                             .copyWith(color: AppColors.primaryTextColor)),
+                    verticalSpace(20),
+                    Row(
+                      spacing: 8,
+                      children: [
+                        Image.asset(
+                          Assets.imagesWritterImage,
+                          height: 24,
+                          width: 24,
+                        ),
+                        Text(
+                          'Harry Harper · Apr 12, 2023',
+                          style: Styles.regular12
+                              .copyWith(color: AppColors.secondaryTextColor),
+                        ),
+                      ],
+                    ),
+                    verticalSpace(24),
+                    Text(
+                      'Forests are one of the most important natural resources that our planet possesses. Not only do they provide us with a diverse range of products such as timber, medicine, and food, but they also play a vital role in mitigating climate change and maintaining the overall health of our planet\'s ecosystems. In this article, we will explore the ways in which forests are helping our world.',
+                      style: Styles.regular16
+                          .copyWith(color: AppColors.primaryTextColor),
+                    ),
                   ],
                 ),
               ),

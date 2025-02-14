@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/features/home/presentation/views/home_view_widget.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -13,93 +13,52 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  late PersistentTabController _controller;
-
-  @override
-  void initState() {
-    _controller = PersistentTabController(initialIndex: 0);
-    super.initState();
-  }
+  int _currentIndex = 0;
+  final List<Widget> _screens = const [
+    HomeViewWidget(),
+    Center(
+      child: Text('Explore'),
+    ),
+    Center(
+      child: Text('Bookmark'),
+    ),
+    Center(
+      child: Text('Profile'),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      stateManagement: true,
-      hideNavigationBarWhenKeyboardAppears: true,
-      popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-      padding: const EdgeInsets.only(top: 8),
-      backgroundColor: Colors.white,
-      isVisible: true,
-      animationSettings: const NavBarAnimationSettings(
-        navBarItemAnimation: ItemAnimationSettings(
-          duration: Duration(milliseconds: 400),
-          curve: Curves.ease,
-        ),
-        screenTransitionAnimation: ScreenTransitionAnimationSettings(
-          duration: Duration(milliseconds: 200),
-          screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
-        ),
+    return Scaffold(
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
       ),
-      confineToSafeArea: true,
-      navBarHeight: kBottomNavigationBarHeight,
+      bottomNavigationBar: SalomonBottomBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: [
+            SalomonBottomBarItem(
+                icon: Icon(FontAwesomeIcons.house),
+                title: Text('Home'),
+                selectedColor: Colors.black),
+            SalomonBottomBarItem(
+                icon: Icon(FontAwesomeIcons.earthAmericas),
+                title: Text('Explore'),
+                selectedColor: Colors.black),
+            SalomonBottomBarItem(
+                icon: Icon(FontAwesomeIcons.book),
+                title: Text('Bookmark'),
+                selectedColor: Colors.black),
+            SalomonBottomBarItem(
+                icon: Icon(FontAwesomeIcons.solidUser),
+                title: Text('Profile'),
+                selectedColor: Colors.black),
+          ]),
     );
-  }
-
-  List<Widget> _buildScreens() {
-    return [
-      HomeViewWidget(),
-      Center(
-        child: Text('Explore'),
-      ),
-      Center(
-        child: Text('Bookmark'),
-      ),
-      Center(
-        child: Text('Profile'),
-      ),
-    ];
-  }
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-          icon: Icon(FontAwesomeIcons.house),
-          title: ("Home"),
-          activeColorPrimary: Colors.black,
-          activeColorSecondary: Colors.black,
-          inactiveColorPrimary: Colors.black,
-          inactiveColorSecondary: Colors.transparent,
-          routeAndNavigatorSettings: RouteAndNavigatorSettings()),
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.earthAmericas),
-        title: ("Explore"),
-        activeColorPrimary: Colors.black,
-        activeColorSecondary: Colors.black,
-        inactiveColorPrimary: Colors.black,
-        inactiveColorSecondary: Colors.transparent,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.book),
-        title: ("Bookmark"),
-        activeColorPrimary: Colors.black,
-        activeColorSecondary: Colors.black,
-        inactiveColorPrimary: Colors.black,
-        inactiveColorSecondary: Colors.transparent,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.solidUser),
-        title: ("Profile"),
-        activeColorPrimary: Colors.black,
-        activeColorSecondary: Colors.black,
-        inactiveColorPrimary: Colors.black,
-        inactiveColorSecondary: Colors.transparent,
-      ),
-    ];
   }
 }

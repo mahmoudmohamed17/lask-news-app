@@ -33,5 +33,9 @@ class Assets {
   /// Assets for imagesUser
   /// assets/images/user.svg
   static const String imagesUser = "assets/images/user.svg";
+
+  /// Assets for imagesWritterImage
+  /// assets/images/writter_image.png
+  static const String imagesWritterImage = "assets/images/writter_image.png";
 }
 

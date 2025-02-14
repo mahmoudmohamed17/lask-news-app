@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/context_extension.dart';
+import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:lask_news_app/features/home/presentation/views/news_details_view.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({super.key});
@@ -15,11 +15,7 @@ class NewsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // instead of navigator
-        PersistentNavBarNavigator.pushNewScreen(context,
-            screen: NewsDetailsView(),
-            withNavBar: false,
-            pageTransitionAnimation: PageTransitionAnimation.cupertino);
+        context.pushNamed(NewsDetailsView.id);
       },
       child: Container(
         constraints: BoxConstraints(
