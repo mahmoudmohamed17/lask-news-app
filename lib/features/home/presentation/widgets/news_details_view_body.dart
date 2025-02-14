@@ -4,6 +4,7 @@ import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
+import 'package:lask_news_app/features/home/presentation/widgets/read_more_widget.dart';
 
 class NewsDetailsViewBody extends StatelessWidget {
   const NewsDetailsViewBody({super.key});
@@ -68,6 +69,11 @@ class NewsDetailsViewBody extends StatelessWidget {
                       'Forests are one of the most important natural resources that our planet possesses. Not only do they provide us with a diverse range of products such as timber, medicine, and food, but they also play a vital role in mitigating climate change and maintaining the overall health of our planet\'s ecosystems. In this article, we will explore the ways in which forests are helping our world.',
                       style: Styles.regular16
                           .copyWith(color: AppColors.primaryTextColor),
+                    ),
+                    verticalSpace(24),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: ReadMoreWidget(),
                     ),
                   ],
                 ),
