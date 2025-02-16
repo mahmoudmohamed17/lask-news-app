@@ -3,8 +3,8 @@ import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 
-class SearchTap extends StatelessWidget {
-  const SearchTap({
+class SearchTab extends StatelessWidget {
+  const SearchTab({
     super.key,
     required this.label,
     required this.isActive,

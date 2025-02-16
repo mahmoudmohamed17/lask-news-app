@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/widgets/custom_app_bar.dart';
-import 'package:lask_news_app/features/explore/presentation/widgets/explore_search_page_view.dart';
+import 'package:lask_news_app/features/explore/presentation/widgets/explore_search_content.dart';
 
 class ExploreViewWidget extends StatelessWidget {
   const ExploreViewWidget({super.key});
@@ -17,7 +17,7 @@ class ExploreViewWidget extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(child: verticalSpace(16)),
-          SliverFillRemaining(child: ExploreSearchPageView(),),
+          SliverFillRemaining(child: ExploreSearchContent(),),
         ],
       ),
     );

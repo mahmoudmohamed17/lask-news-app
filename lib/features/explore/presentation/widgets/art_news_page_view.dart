@@ -3,8 +3,8 @@ import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/explore_news_items_list.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/special_explore_news_item.dart';
 
-class BusinessNewsPageView extends StatelessWidget {
-  const BusinessNewsPageView({super.key});
+class ArtNewsPageView extends StatelessWidget {
+  const ArtNewsPageView({super.key});
 
   @override
   Widget build(BuildContext context) {

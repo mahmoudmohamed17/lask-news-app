@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lask_news_app/features/explore/presentation/widgets/search_tap.dart';
+import 'package:lask_news_app/features/explore/presentation/widgets/search_tab.dart';
 
-class SearchTapsList extends StatefulWidget {
-  const SearchTapsList({super.key, required this.currentIndex});
+class SearchTabsList extends StatelessWidget {
+  const SearchTabsList(
+      {super.key, required this.currentIndex, required this.pageController});
   final int currentIndex;
+  final PageController pageController;
 
-  @override
-  State<SearchTapsList> createState() => _SearchTapsListState();
-}
-
-class _SearchTapsListState extends State<SearchTapsList> {
   static final List<String> _searchTapLables = [
     'All',
     'Sports',
@@ -19,7 +16,7 @@ class _SearchTapsListState extends State<SearchTapsList> {
     'Politics',
     'Art',
   ];
-  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,15 +27,15 @@ class _SearchTapsListState extends State<SearchTapsList> {
           itemBuilder: (_, index) {
             return GestureDetector(
                 onTap: () {
-                  setState(() {
-                    _currentIndex = index;
-                  });
+                  pageController.animateToPage(index,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.ease);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8),
-                  child: SearchTap(
+                  child: SearchTab(
                     label: _searchTapLables[index],
-                    isActive: _currentIndex == index,
+                    isActive: currentIndex == index,
                   ),
                 ));
           }),
