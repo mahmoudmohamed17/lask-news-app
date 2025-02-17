@@ -17,7 +17,7 @@ class ExploreNewsItem extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(newsItemBorder),
       ),
       child: Row(
