@@ -51,11 +51,14 @@ class ExploreNewsItem extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset(
-            Assets.imagesTestImage,
-            height: 100,
-            width: 120,
-            fit: BoxFit.fill,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(newsItemBorder),
+            child: Image.asset(
+              Assets.imagesTestImage,
+              height: 100,
+              width: 120,
+              fit: BoxFit.fill,
+            ),
           )
         ],
       ),

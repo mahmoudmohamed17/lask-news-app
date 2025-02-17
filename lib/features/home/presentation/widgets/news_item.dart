@@ -4,7 +4,6 @@ import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
-import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:lask_news_app/features/home/presentation/views/news_details_view.dart';
 
@@ -28,8 +27,9 @@ class NewsItem extends StatelessWidget {
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FractionallySizedBox(
-              widthFactor: 1,
+            SizedBox(
+              width: double.infinity,
+              height: 270,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(newsItemBorder),
                 child: Image.asset(
@@ -39,9 +39,9 @@ class NewsItem extends StatelessWidget {
               ),
             ),
             FractionallySizedBox(
-              widthFactor: 0.9,
+              widthFactor: 0.85,
               child: Padding(
-                padding: const EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
                   'Experience the Serenity of Japan\'s Traditional Countryside',
                   maxLines: 2,
@@ -54,7 +54,7 @@ class NewsItem extends StatelessWidget {
             FractionallySizedBox(
               widthFactor: 0.45,
               child: Padding(
-                padding: const EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
                   'Technology',
                   maxLines: 1,
@@ -64,7 +64,6 @@ class NewsItem extends StatelessWidget {
                 ),
               ),
             ),
-            verticalSpace(16),
           ],
         ),
       ),

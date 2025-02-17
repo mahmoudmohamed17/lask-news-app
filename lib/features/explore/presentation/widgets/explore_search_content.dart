@@ -17,15 +17,44 @@ class ExploreSearchContent extends StatefulWidget {
 }
 
 class _ExploreSearchContentState extends State<ExploreSearchContent> {
-  late PageController _pageController;
   int _currentIndex = 0;
+  late PageController _pageController;
+  late ScrollController _scrollController;
+
   @override
   void initState() {
     _pageController = PageController();
-    _pageController.addListener(() {
+    _scrollController = ScrollController();
+    _pageController.addListener(_syncTabsScroll);
+    super.initState();
+  }
+
+  void _syncTabsScroll() {
+    setState(() {
       _currentIndex = _pageController.page!.round();
     });
-    super.initState();
+    double scrollOffset = _currentIndex * 50.0;
+    _scrollController.animateTo(
+      scrollOffset,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
+  }
+
+  void _onTapTab(int index) {
+    _pageController.animateToPage(index,
+        duration: Duration(milliseconds: 300), curve: Curves.ease);
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.removeListener(_syncTabsScroll);
+    _pageController.dispose();
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -36,20 +65,14 @@ class _ExploreSearchContentState extends State<ExploreSearchContent> {
         spacing: 16,
         children: [
           SizedBox(
-            height: 35,
+            height: 37,
             child: ListView.builder(
+                controller: _scrollController,
                 scrollDirection: Axis.horizontal,
                 itemCount: _searchTapLables.length,
                 itemBuilder: (_, index) {
                   return GestureDetector(
-                      onTap: () {
-                        _pageController.animateToPage(index,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.ease);
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      },
+                      onTap: () => _onTapTab(index),
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: SearchTab(

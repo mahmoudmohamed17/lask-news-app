@@ -14,28 +14,30 @@ class NewsDetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: NewsDetailsViewBody(),
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [BoxShadow(color: Colors.grey[200]!, spreadRadius: 1)],
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(bottomNavBarBorder),
-                topRight: Radius.circular(bottomNavBarBorder))),
-        padding: EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  context.pop();
-                },
-                child: Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                )),
-                BottomNavBarActions(),
-          ],
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [BoxShadow(color: Colors.grey[200]!, spreadRadius: 1)],
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(bottomNavBarBorder),
+                  topRight: Radius.circular(bottomNavBarBorder))),
+          padding: EdgeInsets.all(16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+                  BottomNavBarActions(),
+            ],
+          ),
         ),
       ),
     );
