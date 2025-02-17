@@ -21,7 +21,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
         if (state is SignupSuccess) {
           context.pushNamed(MainView.id);
           snackBar(context, 'Account created successfuly!');
-          SharedPrefs.setBool(isUserAuthenticaed, true);
+          SharedPrefs.setBool(isUserAuthenticated, true);
         }
         if (state is SignupFailed) {
           snackBar(context, state.message);

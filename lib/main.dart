@@ -28,8 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:
-          checkAppFlow(), // to avoid view onboarding and auth every time I open the app
+      initialRoute: checkInitialRoute(),
       onGenerateRoute: AppRoutes.onGeneratedRoute,
     );
   }

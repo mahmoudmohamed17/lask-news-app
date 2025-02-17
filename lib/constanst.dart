@@ -9,4 +9,4 @@ const onboardingSubTitle =
     'From Politics to Entertainment: Your One-Stop Source for Comprehensive Coverage of the Latest News and Developments Across the Glob will be right on your hand.';
 const savedImage = 'saved_image';
 const isOnboardingSeen = 'is_onboarding_seen';
-const isUserAuthenticaed = 'is_user_authenticated';
+const isUserAuthenticated = 'is_user_authenticated';

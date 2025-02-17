@@ -21,7 +21,7 @@ class SigininViewBodyBlocConsumer extends StatelessWidget {
         if (state is SigninSuccess) {
           context.pushNamed(MainView.id);
           snackBar(context, 'Signed in successfully!');
-          SharedPrefs.setBool(isUserAuthenticaed, true);
+          SharedPrefs.setBool(isUserAuthenticated, true);
         }
         if (state is SigninFailed) {
           snackBar(context, state.message);
