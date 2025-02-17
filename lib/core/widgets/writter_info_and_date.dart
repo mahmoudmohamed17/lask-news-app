@@ -18,10 +18,12 @@ class WritterInfoAndDate extends StatelessWidget {
           height: 24,
           width: 24,
         ),
-        Text(
-          'Harry Harper · Apr 12, 2023',
-          style: Styles.regular12
-              .copyWith(color: AppColors.secondaryTextColor),
+        FittedBox(
+          child: Text(
+            'Harry Harper · Apr 12, 2023',
+            style: Styles.regular12
+                .copyWith(color: AppColors.secondaryTextColor),
+          ),
         ),
       ],
     );

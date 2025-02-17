@@ -39,7 +39,7 @@ class NewsItem extends StatelessWidget {
               ),
             ),
             FractionallySizedBox(
-              widthFactor: 0.85,
+              widthFactor: 1.00,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
@@ -52,7 +52,7 @@ class NewsItem extends StatelessWidget {
               ),
             ),
             FractionallySizedBox(
-              widthFactor: 0.45,
+              widthFactor: 0.50,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(

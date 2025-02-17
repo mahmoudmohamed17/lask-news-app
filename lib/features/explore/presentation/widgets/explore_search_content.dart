@@ -23,13 +23,13 @@ class _ExploreSearchContentState extends State<ExploreSearchContent> {
 
   @override
   void initState() {
+    super.initState();
     _pageController = PageController();
     _scrollController = ScrollController();
-    _pageController.addListener(_syncTabsScroll);
-    super.initState();
+    _pageController.addListener(_syncTabScroll);
   }
 
-  void _syncTabsScroll() {
+  void _syncTabScroll() {
     setState(() {
       _currentIndex = _pageController.page!.round();
     });
@@ -51,7 +51,7 @@ class _ExploreSearchContentState extends State<ExploreSearchContent> {
 
   @override
   void dispose() {
-    _pageController.removeListener(_syncTabsScroll);
+    _pageController.removeListener(_syncTabScroll);
     _pageController.dispose();
     _scrollController.dispose();
     super.dispose();
