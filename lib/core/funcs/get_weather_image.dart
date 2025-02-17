@@ -10,16 +10,24 @@ String getWeatherImage({required String description}) {
       return Assets.imagesClear;
     case 'partly cloudy':
     case 'cloudy':
+    case 'few clouds':
+    case 'overcast clouds':
+    case 'scattered clouds':
     case 'overcast':
     case 'foggy':
     case 'misty':
       return Assets.imagesCloudy;
     case 'rainy':
+    case 'light rain':
+    case 'moderate rain':
+    case '':
     case 'heavy rainy':
       return Assets.imagesRainy;
     case 'snowy':
     case 'icy':
     case 'frosty':
+    case 'light snow':
+    case 'heavy snow':
     case 'hailstorm':
       return Assets.imagesSnow;
     case 'windy':
