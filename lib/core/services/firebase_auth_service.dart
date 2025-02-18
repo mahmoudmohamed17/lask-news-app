@@ -33,7 +33,6 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log('An error with signUp in FirebaseAuthService ==> $e');
-
       if (e.code == 'weak-password') {
         throw CustomException(message: 'Weak password, try a strong one.');
       } else if (e.code == 'email-already-in-use') {

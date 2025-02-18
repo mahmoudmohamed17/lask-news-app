@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CustomBlocObserver implements BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
-    debugPrint('$change in $bloc');
+    debugPrint('Change: $change in Bloc: $bloc');
   }
 
   @override
@@ -15,7 +15,7 @@ class CustomBlocObserver implements BlocObserver {
 
   @override
   void onCreate(BlocBase bloc) {
-    debugPrint('Create  $bloc');
+    debugPrint('Create $bloc');
 
   }
 
