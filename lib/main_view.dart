@@ -4,6 +4,7 @@ import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/features/bookmark/presentation/views/bookmark_view_widget.dart';
 import 'package:lask_news_app/features/explore/presentation/views/explore_view_widget.dart';
 import 'package:lask_news_app/features/home/presentation/views/home_view_widget.dart';
+import 'package:lask_news_app/features/profile/presentation/views/profile_view_widget.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainView extends StatefulWidget {
@@ -20,9 +21,7 @@ class _MainViewState extends State<MainView> {
     HomeViewWidget(),
     ExploreViewWidget(),
     BookmarkViewWidget(),
-    Center(
-      child: Text('Profile'),
-    ),
+    ProfileViewWidget(),
   ];
 
   @override
