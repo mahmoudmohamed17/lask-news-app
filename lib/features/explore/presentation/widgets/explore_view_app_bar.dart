@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
+class ExploreViewAppBar extends StatelessWidget {
+  const ExploreViewAppBar({
     super.key,
     required this.title,
   });
