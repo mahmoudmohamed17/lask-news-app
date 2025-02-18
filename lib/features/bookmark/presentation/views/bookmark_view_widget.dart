@@ -8,16 +8,18 @@ class BookmarkViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: BookmarkViewAppBar(),
-        ),
-        SliverToBoxAdapter(child: verticalSpace(16)),
-        SliverFillRemaining(
-          child: BookmarkViewBody(),
-        ),
-      ],
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: BookmarkViewAppBar(),
+          ),
+          SliverToBoxAdapter(child: verticalSpace(16)),
+          SliverFillRemaining(
+            child: BookmarkViewBody(),
+          ),
+        ],
+      ),
     );
   }
 }

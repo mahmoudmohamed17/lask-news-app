@@ -46,6 +46,19 @@ class BookmarkNewsItem extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: context.width * 0.55,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        'Technoloy',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Styles.regular12
+                            .copyWith(color: AppColors.secondaryTextColor),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -53,7 +66,7 @@ class BookmarkNewsItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(newsItemBorder),
               child: Image.asset(
                 Assets.imagesTestImage,
-                height: 100,
+                height: 95,
                 width: 120,
                 fit: BoxFit.fill,
               ),

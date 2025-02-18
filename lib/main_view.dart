@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
+import 'package:lask_news_app/features/bookmark/presentation/views/bookmark_view_widget.dart';
 import 'package:lask_news_app/features/explore/presentation/views/explore_view_widget.dart';
 import 'package:lask_news_app/features/home/presentation/views/home_view_widget.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -18,9 +19,7 @@ class _MainViewState extends State<MainView> {
   final List<Widget> _screens = const [
     HomeViewWidget(),
     ExploreViewWidget(),
-    Center(
-      child: Text('Bookmark'),
-    ),
+    BookmarkViewWidget(),
     Center(
       child: Text('Profile'),
     ),
