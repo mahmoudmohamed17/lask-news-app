@@ -6,9 +6,7 @@ import 'package:lask_news_app/core/utils/styles.dart';
 class ExploreViewAppBar extends StatelessWidget {
   const ExploreViewAppBar({
     super.key,
-    required this.title,
   });
-  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class ExploreViewAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            'Explore',
             style:
                 Styles.semiBold32.copyWith(color: AppColors.primaryTextColor),
           ),

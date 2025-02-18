@@ -9,14 +9,14 @@ import 'package:lask_news_app/features/explore/presentation/widgets/politics_new
 import 'package:lask_news_app/features/explore/presentation/widgets/search_tab.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/sports_news_page_view.dart';
 
-class ExploreSearchContent extends StatefulWidget {
-  const ExploreSearchContent({super.key});
+class ExploreViewBody extends StatefulWidget {
+  const ExploreViewBody({super.key});
 
   @override
-  State<ExploreSearchContent> createState() => _ExploreSearchContentState();
+  State<ExploreViewBody> createState() => _ExploreViewBodyState();
 }
 
-class _ExploreSearchContentState extends State<ExploreSearchContent> {
+class _ExploreViewBodyState extends State<ExploreViewBody> {
   int _currentIndex = 0;
   late PageController _pageController;
   late ScrollController _scrollController;
