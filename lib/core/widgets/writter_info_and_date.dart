@@ -22,7 +22,7 @@ class WritterInfoAndDate extends StatelessWidget {
           child: Text(
             'Harry Harper · Apr 12, 2023',
             style: Styles.regular12
-                .copyWith(color: AppColors.secondaryTextColor),
+                .copyWith(color: AppColors.secondaryHeavyTextColor),
           ),
         ),
       ],

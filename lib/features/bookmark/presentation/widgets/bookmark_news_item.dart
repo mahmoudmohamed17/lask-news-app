@@ -55,7 +55,7 @@ class BookmarkNewsItem extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Styles.regular12
-                            .copyWith(color: AppColors.secondaryTextColor),
+                            .copyWith(color: AppColors.secondaryHeavyTextColor),
                       ),
                     ),
                   ),

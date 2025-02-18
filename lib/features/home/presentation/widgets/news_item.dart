@@ -60,7 +60,7 @@ class NewsItem extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.regular14
-                      .copyWith(color: AppColors.secondaryTextColor),
+                      .copyWith(color: AppColors.secondaryHeavyTextColor),
                 ),
               ),
             ),

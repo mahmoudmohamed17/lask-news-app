@@ -51,7 +51,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             : null,
         hintText: widget.hintText,
         hintStyle:
-            Styles.regular18.copyWith(color: AppColors.secondaryTextColor),
+            Styles.regular18.copyWith(color: AppColors.secondaryHeavyTextColor),
         contentPadding: EdgeInsets.all(12),
         enabledBorder: buildBorder(),
         focusedBorder: buildBorder(),

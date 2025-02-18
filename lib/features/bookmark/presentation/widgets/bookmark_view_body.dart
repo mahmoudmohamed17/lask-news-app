@@ -21,7 +21,7 @@ class BookmarkViewBody extends StatelessWidget {
                 SlidableAction(
                   onPressed: (value) {},
                   icon: FontAwesomeIcons.solidBookmark,
-                  foregroundColor: AppColors.secondaryTextColor,
+                  foregroundColor: AppColors.secondaryHeavyTextColor,
                   backgroundColor: Colors.transparent,
                 )
               ]),

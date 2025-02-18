@@ -60,7 +60,7 @@ class OnBoardingViewBody extends StatelessWidget {
                   onboardingSubTitle,
                   textAlign: TextAlign.center,
                   style: Styles.regular18
-                      .copyWith(color: AppColors.secondaryTextColor),
+                      .copyWith(color: AppColors.secondaryHeavyTextColor),
                 ),
                 verticalSpace(8),
                 CustomButton(

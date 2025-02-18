@@ -22,12 +22,12 @@ class CurrentWeatherWidget extends StatelessWidget {
         Text(
           capitalizeFirstLetter(weatherModel.weatherDescription),
           style:
-              Styles.semiBold14.copyWith(color: AppColors.secondaryTextColor),
+              Styles.semiBold14.copyWith(color: AppColors.secondaryHeavyTextColor),
         ),
         Text(
           '${weatherModel.temperature}°C',
           style:
-              Styles.semiBold14.copyWith(color: AppColors.secondaryTextColor),
+              Styles.semiBold14.copyWith(color: AppColors.secondaryHeavyTextColor),
         ),
       ],
     );
