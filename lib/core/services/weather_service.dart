@@ -5,7 +5,7 @@ import 'package:weather/weather.dart';
 
 class WeatherService {
   static Future<WeatherModel> getCurrentWeather() async {
-    WeatherFactory wf = WeatherFactory(ApiKeys.myWeatherApiKey);
+    WeatherFactory wf = WeatherFactory(ApiKeys.weatherApiKey);
     Weather weather = await wf.currentWeatherByCityName('Cairo');
     var weatherModel = WeatherModel(
         image: getWeatherImage(description: weather.weatherDescription!),
