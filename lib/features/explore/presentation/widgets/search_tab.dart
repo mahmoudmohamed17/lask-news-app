@@ -16,6 +16,7 @@ class SearchTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
+      height: 40,
       decoration: ShapeDecoration(
           color: isActive ? AppColors.secondaryColor : Colors.white,
           shape: RoundedRectangleBorder(

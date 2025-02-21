@@ -11,7 +11,7 @@ class CustomLoadingIndicator extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 10,
+        spacing: 12,
         children: [
           SizedBox(
             height: 70,
@@ -23,7 +23,7 @@ class CustomLoadingIndicator extends StatelessWidget {
               colors: [Colors.black],
             ),
           ),
-          Text('Loading...', style: Styles.semiBold16,),
+          Text('Loading...', style: Styles.semiBold18,),
         ],
       ),
     );

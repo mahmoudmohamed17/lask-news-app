@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lask_news_app/constanst.dart';
+import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/all_news_page_view.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/art_news_page_view.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/business_news_page_view.dart';
@@ -33,9 +34,12 @@ class _ExploreViewBodyState extends State<ExploreViewBody> {
     setState(() {
       _currentIndex = _pageController.page!.round();
     });
-    double scrollOffset = _currentIndex * 50.0;
+    double screenWidth = context.width;
+    double tabWidth = 85;
+    double offset =
+        (_currentIndex * tabWidth) - (screenWidth / 2) + (tabWidth / 2);
     _scrollController.animateTo(
-      scrollOffset,
+      offset.clamp(0.0, _scrollController.position.maxScrollExtent),
       duration: Duration(milliseconds: 300),
       curve: Curves.ease,
     );
@@ -65,7 +69,7 @@ class _ExploreViewBodyState extends State<ExploreViewBody> {
         spacing: 16,
         children: [
           SizedBox(
-            height: 37,
+            height: 40,
             child: ListView.builder(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,

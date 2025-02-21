@@ -11,6 +11,7 @@ String getWeatherImage({required String description}) {
     case 'partly cloudy':
     case 'cloudy':
     case 'few clouds':
+    case 'broken clouds':
     case 'overcast clouds':
     case 'scattered clouds':
     case 'overcast':
