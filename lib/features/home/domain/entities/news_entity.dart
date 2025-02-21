@@ -17,6 +17,6 @@ class NewsEntity {
       required this.author,
       required this.url,
       required this.articleCategory,
-       this.isLiked = false,
-       this.isBookmarked = false});
+      this.isLiked = false,
+      this.isBookmarked = false});
 }

@@ -1,4 +1,4 @@
-import 'package:lask_news_app/features/home/domain/repositories/news_entity.dart';
+import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
 
 class NewsModel extends NewsEntity {
   String? articleId;
