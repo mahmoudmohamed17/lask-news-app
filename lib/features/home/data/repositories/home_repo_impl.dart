@@ -24,7 +24,7 @@ class HomeRepoImpl extends HomeRepo {
     } catch (e) {
       return left(ApiServerFailure(
           message:
-              'An error occured while handling the data, please try again later'));
+              'An error occured while handling the data, please try again later.'));
     }
   }
 }
