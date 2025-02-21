@@ -5,7 +5,7 @@ import 'package:lask_news_app/features/auth/domain/repositories/auth_repo.dart';
 
 final getIt = GetIt.instance;
 
-void getIteService() {
+void setupLocator() {
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<AuthRepo>(
       AuthRepoImpl(firebaseAuthService: getIt.get<FirebaseAuthService>()));

@@ -5,7 +5,6 @@ import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
-import 'package:lask_news_app/core/widgets/writter_info_and_date.dart';
 import 'package:lask_news_app/features/home/presentation/views/news_details_view.dart';
 
 class SpecialExploreNewsItem extends StatelessWidget {
@@ -54,7 +53,26 @@ class SpecialExploreNewsItem extends StatelessWidget {
                 right: 8,
                 bottom: 8,
               ),
-              child: WritterInfoAndDate(),
+              child: Row(
+                spacing: 8,
+                children: [
+                  Image.asset(
+                    Assets.imagesWritterImage,
+                    height: 24,
+                    width: 24,
+                  ),
+                  SizedBox(
+                    width: context.width * 0.75,
+                    child: Text(
+                      'Harry Harper · Apr 12, 2023',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Styles.regular12
+                          .copyWith(color: AppColors.secondaryHeavyTextColor),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -4,7 +4,6 @@ import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
-import 'package:lask_news_app/core/widgets/writter_info_and_date.dart';
 import 'package:lask_news_app/features/home/presentation/widgets/read_more_widget.dart';
 
 class NewsDetailsViewBody extends StatelessWidget {
@@ -50,7 +49,25 @@ class NewsDetailsViewBody extends StatelessWidget {
                         style: Styles.semiBold32
                             .copyWith(color: AppColors.primaryTextColor)),
                     verticalSpace(20),
-                    WritterInfoAndDate(),
+                    Row(
+                      spacing: 8,
+                      children: [
+                        Image.asset(
+                          Assets.imagesWritterImage,
+                          height: 24,
+                          width: 24,
+                        ),
+                        SizedBox(
+                          child: Text(
+                            'Harry Harper · Apr 12, 2023',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Styles.regular12.copyWith(
+                                color: AppColors.secondaryHeavyTextColor),
+                          ),
+                        ),
+                      ],
+                    ),
                     verticalSpace(24),
                     Text(
                       'Forests are one of the most important natural resources that our planet possesses. Not only do they provide us with a diverse range of products such as timber, medicine, and food, but they also play a vital role in mitigating climate change and maintaining the overall health of our planet\'s ecosystems. In this article, we will explore the ways in which forests are helping our world.',

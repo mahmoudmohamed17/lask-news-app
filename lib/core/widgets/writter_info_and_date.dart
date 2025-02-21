@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
@@ -18,9 +19,12 @@ class WritterInfoAndDate extends StatelessWidget {
           height: 24,
           width: 24,
         ),
-        FittedBox(
+        SizedBox(
+          width: context.width * 0.42,
           child: Text(
             'Harry Harper · Apr 12, 2023',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: Styles.regular12
                 .copyWith(color: AppColors.secondaryHeavyTextColor),
           ),

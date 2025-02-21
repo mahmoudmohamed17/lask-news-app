@@ -18,7 +18,7 @@ void main() async {
     SharedPrefs.init(),
     WeatherManager.getWeather(),
   ]);
-  getIteService();
+  setupLocator();
   Bloc.observer = CustomBlocObserver();
   runApp(const MyApp());
 }
