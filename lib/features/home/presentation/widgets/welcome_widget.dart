@@ -14,7 +14,8 @@ class WelcomeWidget extends StatelessWidget {
       children: [
         Text(
           'Hello, Mahmoud!',
-          style: Styles.regular18.copyWith(color: AppColors.secondaryHeavyTextColor),
+          style: Styles.regular18
+              .copyWith(color: AppColors.secondaryHeavyTextColor),
         ),
         Text(
           getCurrentDateTime(),

@@ -23,7 +23,10 @@ class CustomLoadingIndicator extends StatelessWidget {
               colors: [Colors.black],
             ),
           ),
-          Text('Loading...', style: Styles.semiBold18,),
+          Text(
+            'Loading...',
+            style: Styles.semiBold18,
+          ),
         ],
       ),
     );

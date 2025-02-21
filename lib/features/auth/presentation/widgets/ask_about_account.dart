@@ -24,8 +24,8 @@ class AskAboutAccount extends StatelessWidget {
           },
           child: Text(
             'Create Account',
-            style: Styles.regular14
-                .copyWith(decoration: TextDecoration.underline),
+            style:
+                Styles.regular14.copyWith(decoration: TextDecoration.underline),
           ),
         ),
       ],

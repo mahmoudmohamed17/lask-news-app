@@ -15,7 +15,9 @@ class ExploreViewWidget extends StatelessWidget {
             child: ExploreViewAppBar(),
           ),
           SliverToBoxAdapter(child: verticalSpace(16)),
-          SliverFillRemaining(child: ExploreViewBody(),),
+          SliverFillRemaining(
+            child: ExploreViewBody(),
+          ),
         ],
       ),
     );

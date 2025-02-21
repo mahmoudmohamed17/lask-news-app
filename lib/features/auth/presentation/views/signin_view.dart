@@ -21,5 +21,3 @@ class SigninView extends StatelessWidget {
     );
   }
 }
-
-

@@ -35,7 +35,7 @@ class NewsDetailsView extends StatelessWidget {
                     Icons.arrow_back,
                     color: Colors.black,
                   )),
-                  BottomNavBarActions(),
+              BottomNavBarActions(),
             ],
           ),
         ),

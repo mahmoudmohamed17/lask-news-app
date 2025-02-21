@@ -27,7 +27,6 @@ class _ImagePickingWidgetState extends State<ImagePickingWidget> {
       setState(() {
         _imageFile = File(image.path);
       });
-      
     }
   }
 

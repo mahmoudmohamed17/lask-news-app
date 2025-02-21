@@ -13,8 +13,7 @@ class ReadMoreWidget extends StatelessWidget {
       spacing: 4,
       children: [
         Text('Want to read more?',
-            style: Styles.semiBold14
-                .copyWith(color: AppColors.primaryColor)),
+            style: Styles.semiBold14.copyWith(color: AppColors.primaryColor)),
         Text('Click here',
             style: Styles.semiBold14.copyWith(
               color: AppColors.primaryColor,
