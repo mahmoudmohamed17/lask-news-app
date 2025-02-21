@@ -49,6 +49,12 @@ class $NewsTableTable extends NewsTable
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
       'url', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _categoryMeta =
+      const VerificationMeta('category');
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+      'category', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _isLikedMeta =
       const VerificationMeta('isLiked');
   @override
@@ -70,8 +76,18 @@ class $NewsTableTable extends NewsTable
           'CHECK ("is_bookmarked" IN (0, 1))'),
       defaultValue: const Variable(false));
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, title, description, image, author, date, url, isLiked, isBookmarked];
+  List<GeneratedColumn> get $columns => [
+        id,
+        title,
+        description,
+        image,
+        author,
+        date,
+        url,
+        category,
+        isLiked,
+        isBookmarked
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -123,6 +139,12 @@ class $NewsTableTable extends NewsTable
     } else if (isInserting) {
       context.missing(_urlMeta);
     }
+    if (data.containsKey('category')) {
+      context.handle(_categoryMeta,
+          category.isAcceptableOrUnknown(data['category']!, _categoryMeta));
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
     if (data.containsKey('is_liked')) {
       context.handle(_isLikedMeta,
           isLiked.isAcceptableOrUnknown(data['is_liked']!, _isLikedMeta));
@@ -156,6 +178,8 @@ class $NewsTableTable extends NewsTable
           .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
       url: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}url'])!,
+      category: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}category'])!,
       isLiked: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}is_liked'])!,
       isBookmarked: attachedDatabase.typeMapping
@@ -177,6 +201,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
   final String author;
   final String date;
   final String url;
+  final String category;
   final bool isLiked;
   final bool isBookmarked;
   const NewsTableData(
@@ -187,6 +212,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       required this.author,
       required this.date,
       required this.url,
+      required this.category,
       required this.isLiked,
       required this.isBookmarked});
   @override
@@ -199,6 +225,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
     map['author'] = Variable<String>(author);
     map['date'] = Variable<String>(date);
     map['url'] = Variable<String>(url);
+    map['category'] = Variable<String>(category);
     map['is_liked'] = Variable<bool>(isLiked);
     map['is_bookmarked'] = Variable<bool>(isBookmarked);
     return map;
@@ -213,6 +240,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       author: Value(author),
       date: Value(date),
       url: Value(url),
+      category: Value(category),
       isLiked: Value(isLiked),
       isBookmarked: Value(isBookmarked),
     );
@@ -229,6 +257,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       author: serializer.fromJson<String>(json['author']),
       date: serializer.fromJson<String>(json['date']),
       url: serializer.fromJson<String>(json['url']),
+      category: serializer.fromJson<String>(json['category']),
       isLiked: serializer.fromJson<bool>(json['isLiked']),
       isBookmarked: serializer.fromJson<bool>(json['isBookmarked']),
     );
@@ -244,6 +273,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       'author': serializer.toJson<String>(author),
       'date': serializer.toJson<String>(date),
       'url': serializer.toJson<String>(url),
+      'category': serializer.toJson<String>(category),
       'isLiked': serializer.toJson<bool>(isLiked),
       'isBookmarked': serializer.toJson<bool>(isBookmarked),
     };
@@ -257,6 +287,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
           String? author,
           String? date,
           String? url,
+          String? category,
           bool? isLiked,
           bool? isBookmarked}) =>
       NewsTableData(
@@ -267,6 +298,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
         author: author ?? this.author,
         date: date ?? this.date,
         url: url ?? this.url,
+        category: category ?? this.category,
         isLiked: isLiked ?? this.isLiked,
         isBookmarked: isBookmarked ?? this.isBookmarked,
       );
@@ -280,6 +312,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       author: data.author.present ? data.author.value : this.author,
       date: data.date.present ? data.date.value : this.date,
       url: data.url.present ? data.url.value : this.url,
+      category: data.category.present ? data.category.value : this.category,
       isLiked: data.isLiked.present ? data.isLiked.value : this.isLiked,
       isBookmarked: data.isBookmarked.present
           ? data.isBookmarked.value
@@ -297,6 +330,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
           ..write('author: $author, ')
           ..write('date: $date, ')
           ..write('url: $url, ')
+          ..write('category: $category, ')
           ..write('isLiked: $isLiked, ')
           ..write('isBookmarked: $isBookmarked')
           ..write(')'))
@@ -304,8 +338,8 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
   }
 
   @override
-  int get hashCode => Object.hash(
-      id, title, description, image, author, date, url, isLiked, isBookmarked);
+  int get hashCode => Object.hash(id, title, description, image, author, date,
+      url, category, isLiked, isBookmarked);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -317,6 +351,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
           other.author == this.author &&
           other.date == this.date &&
           other.url == this.url &&
+          other.category == this.category &&
           other.isLiked == this.isLiked &&
           other.isBookmarked == this.isBookmarked);
 }
@@ -329,6 +364,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
   final Value<String> author;
   final Value<String> date;
   final Value<String> url;
+  final Value<String> category;
   final Value<bool> isLiked;
   final Value<bool> isBookmarked;
   const NewsTableCompanion({
@@ -339,6 +375,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     this.author = const Value.absent(),
     this.date = const Value.absent(),
     this.url = const Value.absent(),
+    this.category = const Value.absent(),
     this.isLiked = const Value.absent(),
     this.isBookmarked = const Value.absent(),
   });
@@ -350,6 +387,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     required String author,
     required String date,
     required String url,
+    required String category,
     this.isLiked = const Value.absent(),
     this.isBookmarked = const Value.absent(),
   })  : title = Value(title),
@@ -357,7 +395,8 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
         image = Value(image),
         author = Value(author),
         date = Value(date),
-        url = Value(url);
+        url = Value(url),
+        category = Value(category);
   static Insertable<NewsTableData> custom({
     Expression<int>? id,
     Expression<String>? title,
@@ -366,6 +405,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     Expression<String>? author,
     Expression<String>? date,
     Expression<String>? url,
+    Expression<String>? category,
     Expression<bool>? isLiked,
     Expression<bool>? isBookmarked,
   }) {
@@ -377,6 +417,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
       if (author != null) 'author': author,
       if (date != null) 'date': date,
       if (url != null) 'url': url,
+      if (category != null) 'category': category,
       if (isLiked != null) 'is_liked': isLiked,
       if (isBookmarked != null) 'is_bookmarked': isBookmarked,
     });
@@ -390,6 +431,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
       Value<String>? author,
       Value<String>? date,
       Value<String>? url,
+      Value<String>? category,
       Value<bool>? isLiked,
       Value<bool>? isBookmarked}) {
     return NewsTableCompanion(
@@ -400,6 +442,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
       author: author ?? this.author,
       date: date ?? this.date,
       url: url ?? this.url,
+      category: category ?? this.category,
       isLiked: isLiked ?? this.isLiked,
       isBookmarked: isBookmarked ?? this.isBookmarked,
     );
@@ -429,6 +472,9 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     if (url.present) {
       map['url'] = Variable<String>(url.value);
     }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
     if (isLiked.present) {
       map['is_liked'] = Variable<bool>(isLiked.value);
     }
@@ -448,6 +494,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
           ..write('author: $author, ')
           ..write('date: $date, ')
           ..write('url: $url, ')
+          ..write('category: $category, ')
           ..write('isLiked: $isLiked, ')
           ..write('isBookmarked: $isBookmarked')
           ..write(')'))
@@ -474,6 +521,7 @@ typedef $$NewsTableTableCreateCompanionBuilder = NewsTableCompanion Function({
   required String author,
   required String date,
   required String url,
+  required String category,
   Value<bool> isLiked,
   Value<bool> isBookmarked,
 });
@@ -485,6 +533,7 @@ typedef $$NewsTableTableUpdateCompanionBuilder = NewsTableCompanion Function({
   Value<String> author,
   Value<String> date,
   Value<String> url,
+  Value<String> category,
   Value<bool> isLiked,
   Value<bool> isBookmarked,
 });
@@ -518,6 +567,9 @@ class $$NewsTableTableFilterComposer
 
   ColumnFilters<String> get url => $composableBuilder(
       column: $table.url, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get category => $composableBuilder(
+      column: $table.category, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<bool> get isLiked => $composableBuilder(
       column: $table.isLiked, builder: (column) => ColumnFilters(column));
@@ -556,6 +608,9 @@ class $$NewsTableTableOrderingComposer
   ColumnOrderings<String> get url => $composableBuilder(
       column: $table.url, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get category => $composableBuilder(
+      column: $table.category, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<bool> get isLiked => $composableBuilder(
       column: $table.isLiked, builder: (column) => ColumnOrderings(column));
 
@@ -593,6 +648,9 @@ class $$NewsTableTableAnnotationComposer
 
   GeneratedColumn<String> get url =>
       $composableBuilder(column: $table.url, builder: (column) => column);
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
 
   GeneratedColumn<bool> get isLiked =>
       $composableBuilder(column: $table.isLiked, builder: (column) => column);
@@ -634,6 +692,7 @@ class $$NewsTableTableTableManager extends RootTableManager<
             Value<String> author = const Value.absent(),
             Value<String> date = const Value.absent(),
             Value<String> url = const Value.absent(),
+            Value<String> category = const Value.absent(),
             Value<bool> isLiked = const Value.absent(),
             Value<bool> isBookmarked = const Value.absent(),
           }) =>
@@ -645,6 +704,7 @@ class $$NewsTableTableTableManager extends RootTableManager<
             author: author,
             date: date,
             url: url,
+            category: category,
             isLiked: isLiked,
             isBookmarked: isBookmarked,
           ),
@@ -656,6 +716,7 @@ class $$NewsTableTableTableManager extends RootTableManager<
             required String author,
             required String date,
             required String url,
+            required String category,
             Value<bool> isLiked = const Value.absent(),
             Value<bool> isBookmarked = const Value.absent(),
           }) =>
@@ -667,6 +728,7 @@ class $$NewsTableTableTableManager extends RootTableManager<
             author: author,
             date: date,
             url: url,
+            category: category,
             isLiked: isLiked,
             isBookmarked: isBookmarked,
           ),

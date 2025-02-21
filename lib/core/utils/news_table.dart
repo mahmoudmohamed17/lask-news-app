@@ -8,6 +8,7 @@ class NewsTable extends Table {
   TextColumn get author => text()();
   TextColumn get date => text()();
   TextColumn get url => text()();
-  BoolColumn get isLiked => boolean().withDefault(const Variable(false))();
-  BoolColumn get isBookmarked => boolean().withDefault(const Variable(false))();
+  TextColumn get category => text()();
+  BoolColumn get isLiked => boolean()();
+  BoolColumn get isBookmarked => boolean()();
 }
