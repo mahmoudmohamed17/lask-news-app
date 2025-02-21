@@ -33,7 +33,7 @@ class AppDatabase extends _$AppDatabase {
 
   Future<List<NewsEntity>> getNews({String category = 'top'}) async {
     final query = select(newsTable)
-      ..where((art) => art.category.equals(category));
+      ..where((item) => item.category.equals(category));
     final news = await query.get();
     return news
         .map((item) => NewsEntity(
@@ -50,7 +50,7 @@ class AppDatabase extends _$AppDatabase {
   }
 
   Future<void> updateArticle(NewsEntity article) async {
-    await (update(newsTable)..where((art) => art.url.equals(article.url)))
+    await (update(newsTable)..where((item) => item.url.equals(article.url)))
         .write(NewsTableCompanion(
       title: Value(article.articleTitle),
       description: Value(article.articleDescription),
