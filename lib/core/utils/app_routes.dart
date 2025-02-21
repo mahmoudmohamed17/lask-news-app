@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lask_news_app/core/utils/routes.dart';
 import 'package:lask_news_app/features/auth/presentation/views/signin_view.dart';
 import 'package:lask_news_app/features/auth/presentation/views/signup_view.dart';
+import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
 import 'package:lask_news_app/features/home/presentation/views/news_details_view.dart';
 import 'package:lask_news_app/main_view.dart';
 import 'package:lask_news_app/features/onboarding/presentation/views/onboarding_view.dart';
@@ -18,7 +19,11 @@ class AppRoutes {
       case Routes.signupView:
         return MaterialPageRoute(builder: (context) => SignupView());
       case Routes.newsDetailsView:
-        return MaterialPageRoute(builder: (context) => NewsDetailsView());
+        final newsEntity = settings.arguments as NewsEntity;
+        return MaterialPageRoute(
+            builder: (context) => NewsDetailsView(
+                  newsEntity: newsEntity,
+                ));
       default:
         return MaterialPageRoute(builder: (context) => Scaffold());
     }

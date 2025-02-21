@@ -1,20 +1,23 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
-import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
+import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
 import 'package:lask_news_app/features/home/presentation/views/news_details_view.dart';
 
 class NewsItem extends StatelessWidget {
-  const NewsItem({super.key});
+  const NewsItem({super.key, required this.newsEntity});
+  final NewsEntity newsEntity;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(NewsDetailsView.id);
+        context.pushNamed(NewsDetailsView.id, arguments: newsEntity);
       },
       child: Container(
         constraints: BoxConstraints(
@@ -32,8 +35,15 @@ class NewsItem extends StatelessWidget {
               height: 270,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(newsItemBorder),
-                child: Image.asset(
-                  Assets.imagesTestImage,
+                child: CachedNetworkImage(
+                  imageUrl: newsEntity.image,
+                  errorWidget: (context, url, error) => Icon(
+                    FontAwesomeIcons.triangleExclamation,
+                    color: Colors.red,
+                  ),
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -43,7 +53,7 @@ class NewsItem extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
-                  'Experience the Serenity of Japan\'s Traditional Countryside',
+                  newsEntity.articleTitle,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.semiBold24
@@ -56,7 +66,7 @@ class NewsItem extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
-                  'Technology',
+                  newsEntity.articleCategory,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.regular14
