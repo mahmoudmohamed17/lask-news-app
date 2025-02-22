@@ -1,11 +1,12 @@
+import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
 
 class NewsModel extends NewsEntity {
   String? articleId;
   String? title;
   String? link;
-  List<String>? keywords;
-  List<String>? creator;
+  List<dynamic>? keywords;
+  List<dynamic>? creator;
   dynamic videoUrl;
   String? description;
   String? content;
@@ -18,8 +19,8 @@ class NewsModel extends NewsEntity {
   String? sourceUrl;
   String? sourceIcon;
   String? language;
-  List<String>? country;
-  List<String>? category;
+  List<dynamic>? country;
+  List<dynamic>? category;
   String? aiTag;
   String? sentiment;
   String? sentimentStats;
@@ -56,8 +57,9 @@ class NewsModel extends NewsEntity {
   }) : super(
             articleTitle: title ?? 'NO TITLE',
             articleDescription: description ?? 'NO DESCRIPTION',
-            image: imageUrl ?? '',
-            creationDate: pubDate ?? '',
+            image: imageUrl ?? defaultArticleImage,
+            articleSourceImage: sourceIcon ?? defaultArticleSourceImage,
+            creationDate: pubDate ?? 'NO DATE',
             author: creator?.first ?? 'NO AUTHOR',
             url: link ?? '',
             articleCategory: category?.first ?? 'NO CATEGORY');
@@ -66,8 +68,8 @@ class NewsModel extends NewsEntity {
         articleId: json['article_id'] as String?,
         title: json['title'] as String?,
         link: json['link'] as String?,
-        keywords: json['keywords'] as dynamic,
-        creator: json['creator'] as List<String>?,
+        keywords: json['keywords'] as List<dynamic>?,
+        creator: json['creator'] as List<dynamic>?,
         videoUrl: json['video_url'] as dynamic,
         description: json['description'] as dynamic,
         content: json['content'] as String?,
@@ -80,8 +82,8 @@ class NewsModel extends NewsEntity {
         sourceUrl: json['source_url'] as String?,
         sourceIcon: json['source_icon'] as String?,
         language: json['language'] as String?,
-        country: json['country'] as List<String>?,
-        category: json['category'] as List<String>?,
+        country: json['country'] as List<dynamic>?,
+        category: json['category'] as List<dynamic>?,
         aiTag: json['ai_tag'] as String?,
         sentiment: json['sentiment'] as String?,
         sentimentStats: json['sentiment_stats'] as String?,

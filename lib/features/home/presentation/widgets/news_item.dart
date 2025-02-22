@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
+import 'package:lask_news_app/core/funcs/capitalize_first_letter.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
@@ -66,7 +67,9 @@ class NewsItem extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
-                  newsEntity.articleCategory,
+                  capitalizeFirstLetter(
+                    newsEntity.articleCategory,
+                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.regular14

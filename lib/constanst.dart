@@ -10,3 +10,5 @@ const onboardingSubTitle =
 const savedImage = 'saved_image';
 const isOnboardingSeen = 'is_onboarding_seen';
 const isUserAuthenticated = 'is_user_authenticated';
+const defaultArticleImage = 'assets/images/splash.png';
+const defaultArticleSourceImage = 'assets/images/writter_image.png';

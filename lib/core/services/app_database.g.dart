@@ -34,6 +34,12 @@ class $NewsTableTable extends NewsTable
   late final GeneratedColumn<String> image = GeneratedColumn<String>(
       'image', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _sourceImageMeta =
+      const VerificationMeta('sourceImage');
+  @override
+  late final GeneratedColumn<String> sourceImage = GeneratedColumn<String>(
+      'source_image', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _authorMeta = const VerificationMeta('author');
   @override
   late final GeneratedColumn<String> author = GeneratedColumn<String>(
@@ -61,26 +67,25 @@ class $NewsTableTable extends NewsTable
   late final GeneratedColumn<bool> isLiked = GeneratedColumn<bool>(
       'is_liked', aliasedName, false,
       type: DriftSqlType.bool,
-      requiredDuringInsert: false,
+      requiredDuringInsert: true,
       defaultConstraints:
-          GeneratedColumn.constraintIsAlways('CHECK ("is_liked" IN (0, 1))'),
-      defaultValue: const Variable(false));
+          GeneratedColumn.constraintIsAlways('CHECK ("is_liked" IN (0, 1))'));
   static const VerificationMeta _isBookmarkedMeta =
       const VerificationMeta('isBookmarked');
   @override
   late final GeneratedColumn<bool> isBookmarked = GeneratedColumn<bool>(
       'is_bookmarked', aliasedName, false,
       type: DriftSqlType.bool,
-      requiredDuringInsert: false,
+      requiredDuringInsert: true,
       defaultConstraints: GeneratedColumn.constraintIsAlways(
-          'CHECK ("is_bookmarked" IN (0, 1))'),
-      defaultValue: const Variable(false));
+          'CHECK ("is_bookmarked" IN (0, 1))'));
   @override
   List<GeneratedColumn> get $columns => [
         id,
         title,
         description,
         image,
+        sourceImage,
         author,
         date,
         url,
@@ -121,6 +126,14 @@ class $NewsTableTable extends NewsTable
     } else if (isInserting) {
       context.missing(_imageMeta);
     }
+    if (data.containsKey('source_image')) {
+      context.handle(
+          _sourceImageMeta,
+          sourceImage.isAcceptableOrUnknown(
+              data['source_image']!, _sourceImageMeta));
+    } else if (isInserting) {
+      context.missing(_sourceImageMeta);
+    }
     if (data.containsKey('author')) {
       context.handle(_authorMeta,
           author.isAcceptableOrUnknown(data['author']!, _authorMeta));
@@ -148,12 +161,16 @@ class $NewsTableTable extends NewsTable
     if (data.containsKey('is_liked')) {
       context.handle(_isLikedMeta,
           isLiked.isAcceptableOrUnknown(data['is_liked']!, _isLikedMeta));
+    } else if (isInserting) {
+      context.missing(_isLikedMeta);
     }
     if (data.containsKey('is_bookmarked')) {
       context.handle(
           _isBookmarkedMeta,
           isBookmarked.isAcceptableOrUnknown(
               data['is_bookmarked']!, _isBookmarkedMeta));
+    } else if (isInserting) {
+      context.missing(_isBookmarkedMeta);
     }
     return context;
   }
@@ -172,6 +189,8 @@ class $NewsTableTable extends NewsTable
           .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
       image: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}image'])!,
+      sourceImage: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}source_image'])!,
       author: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}author'])!,
       date: attachedDatabase.typeMapping
@@ -198,6 +217,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
   final String title;
   final String description;
   final String image;
+  final String sourceImage;
   final String author;
   final String date;
   final String url;
@@ -209,6 +229,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       required this.title,
       required this.description,
       required this.image,
+      required this.sourceImage,
       required this.author,
       required this.date,
       required this.url,
@@ -222,6 +243,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
     map['title'] = Variable<String>(title);
     map['description'] = Variable<String>(description);
     map['image'] = Variable<String>(image);
+    map['source_image'] = Variable<String>(sourceImage);
     map['author'] = Variable<String>(author);
     map['date'] = Variable<String>(date);
     map['url'] = Variable<String>(url);
@@ -237,6 +259,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       title: Value(title),
       description: Value(description),
       image: Value(image),
+      sourceImage: Value(sourceImage),
       author: Value(author),
       date: Value(date),
       url: Value(url),
@@ -254,6 +277,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       title: serializer.fromJson<String>(json['title']),
       description: serializer.fromJson<String>(json['description']),
       image: serializer.fromJson<String>(json['image']),
+      sourceImage: serializer.fromJson<String>(json['sourceImage']),
       author: serializer.fromJson<String>(json['author']),
       date: serializer.fromJson<String>(json['date']),
       url: serializer.fromJson<String>(json['url']),
@@ -270,6 +294,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       'title': serializer.toJson<String>(title),
       'description': serializer.toJson<String>(description),
       'image': serializer.toJson<String>(image),
+      'sourceImage': serializer.toJson<String>(sourceImage),
       'author': serializer.toJson<String>(author),
       'date': serializer.toJson<String>(date),
       'url': serializer.toJson<String>(url),
@@ -284,6 +309,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
           String? title,
           String? description,
           String? image,
+          String? sourceImage,
           String? author,
           String? date,
           String? url,
@@ -295,6 +321,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
         title: title ?? this.title,
         description: description ?? this.description,
         image: image ?? this.image,
+        sourceImage: sourceImage ?? this.sourceImage,
         author: author ?? this.author,
         date: date ?? this.date,
         url: url ?? this.url,
@@ -309,6 +336,8 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
       description:
           data.description.present ? data.description.value : this.description,
       image: data.image.present ? data.image.value : this.image,
+      sourceImage:
+          data.sourceImage.present ? data.sourceImage.value : this.sourceImage,
       author: data.author.present ? data.author.value : this.author,
       date: data.date.present ? data.date.value : this.date,
       url: data.url.present ? data.url.value : this.url,
@@ -327,6 +356,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
           ..write('title: $title, ')
           ..write('description: $description, ')
           ..write('image: $image, ')
+          ..write('sourceImage: $sourceImage, ')
           ..write('author: $author, ')
           ..write('date: $date, ')
           ..write('url: $url, ')
@@ -338,8 +368,8 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
   }
 
   @override
-  int get hashCode => Object.hash(id, title, description, image, author, date,
-      url, category, isLiked, isBookmarked);
+  int get hashCode => Object.hash(id, title, description, image, sourceImage,
+      author, date, url, category, isLiked, isBookmarked);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -348,6 +378,7 @@ class NewsTableData extends DataClass implements Insertable<NewsTableData> {
           other.title == this.title &&
           other.description == this.description &&
           other.image == this.image &&
+          other.sourceImage == this.sourceImage &&
           other.author == this.author &&
           other.date == this.date &&
           other.url == this.url &&
@@ -361,6 +392,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
   final Value<String> title;
   final Value<String> description;
   final Value<String> image;
+  final Value<String> sourceImage;
   final Value<String> author;
   final Value<String> date;
   final Value<String> url;
@@ -372,6 +404,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     this.title = const Value.absent(),
     this.description = const Value.absent(),
     this.image = const Value.absent(),
+    this.sourceImage = const Value.absent(),
     this.author = const Value.absent(),
     this.date = const Value.absent(),
     this.url = const Value.absent(),
@@ -384,24 +417,29 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     required String title,
     required String description,
     required String image,
+    required String sourceImage,
     required String author,
     required String date,
     required String url,
     required String category,
-    this.isLiked = const Value.absent(),
-    this.isBookmarked = const Value.absent(),
+    required bool isLiked,
+    required bool isBookmarked,
   })  : title = Value(title),
         description = Value(description),
         image = Value(image),
+        sourceImage = Value(sourceImage),
         author = Value(author),
         date = Value(date),
         url = Value(url),
-        category = Value(category);
+        category = Value(category),
+        isLiked = Value(isLiked),
+        isBookmarked = Value(isBookmarked);
   static Insertable<NewsTableData> custom({
     Expression<int>? id,
     Expression<String>? title,
     Expression<String>? description,
     Expression<String>? image,
+    Expression<String>? sourceImage,
     Expression<String>? author,
     Expression<String>? date,
     Expression<String>? url,
@@ -414,6 +452,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
       if (title != null) 'title': title,
       if (description != null) 'description': description,
       if (image != null) 'image': image,
+      if (sourceImage != null) 'source_image': sourceImage,
       if (author != null) 'author': author,
       if (date != null) 'date': date,
       if (url != null) 'url': url,
@@ -428,6 +467,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
       Value<String>? title,
       Value<String>? description,
       Value<String>? image,
+      Value<String>? sourceImage,
       Value<String>? author,
       Value<String>? date,
       Value<String>? url,
@@ -439,6 +479,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
       title: title ?? this.title,
       description: description ?? this.description,
       image: image ?? this.image,
+      sourceImage: sourceImage ?? this.sourceImage,
       author: author ?? this.author,
       date: date ?? this.date,
       url: url ?? this.url,
@@ -462,6 +503,9 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
     }
     if (image.present) {
       map['image'] = Variable<String>(image.value);
+    }
+    if (sourceImage.present) {
+      map['source_image'] = Variable<String>(sourceImage.value);
     }
     if (author.present) {
       map['author'] = Variable<String>(author.value);
@@ -491,6 +535,7 @@ class NewsTableCompanion extends UpdateCompanion<NewsTableData> {
           ..write('title: $title, ')
           ..write('description: $description, ')
           ..write('image: $image, ')
+          ..write('sourceImage: $sourceImage, ')
           ..write('author: $author, ')
           ..write('date: $date, ')
           ..write('url: $url, ')
@@ -518,18 +563,20 @@ typedef $$NewsTableTableCreateCompanionBuilder = NewsTableCompanion Function({
   required String title,
   required String description,
   required String image,
+  required String sourceImage,
   required String author,
   required String date,
   required String url,
   required String category,
-  Value<bool> isLiked,
-  Value<bool> isBookmarked,
+  required bool isLiked,
+  required bool isBookmarked,
 });
 typedef $$NewsTableTableUpdateCompanionBuilder = NewsTableCompanion Function({
   Value<int> id,
   Value<String> title,
   Value<String> description,
   Value<String> image,
+  Value<String> sourceImage,
   Value<String> author,
   Value<String> date,
   Value<String> url,
@@ -558,6 +605,9 @@ class $$NewsTableTableFilterComposer
 
   ColumnFilters<String> get image => $composableBuilder(
       column: $table.image, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get sourceImage => $composableBuilder(
+      column: $table.sourceImage, builder: (column) => ColumnFilters(column));
 
   ColumnFilters<String> get author => $composableBuilder(
       column: $table.author, builder: (column) => ColumnFilters(column));
@@ -599,6 +649,9 @@ class $$NewsTableTableOrderingComposer
   ColumnOrderings<String> get image => $composableBuilder(
       column: $table.image, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get sourceImage => $composableBuilder(
+      column: $table.sourceImage, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<String> get author => $composableBuilder(
       column: $table.author, builder: (column) => ColumnOrderings(column));
 
@@ -639,6 +692,9 @@ class $$NewsTableTableAnnotationComposer
 
   GeneratedColumn<String> get image =>
       $composableBuilder(column: $table.image, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceImage => $composableBuilder(
+      column: $table.sourceImage, builder: (column) => column);
 
   GeneratedColumn<String> get author =>
       $composableBuilder(column: $table.author, builder: (column) => column);
@@ -689,6 +745,7 @@ class $$NewsTableTableTableManager extends RootTableManager<
             Value<String> title = const Value.absent(),
             Value<String> description = const Value.absent(),
             Value<String> image = const Value.absent(),
+            Value<String> sourceImage = const Value.absent(),
             Value<String> author = const Value.absent(),
             Value<String> date = const Value.absent(),
             Value<String> url = const Value.absent(),
@@ -701,6 +758,7 @@ class $$NewsTableTableTableManager extends RootTableManager<
             title: title,
             description: description,
             image: image,
+            sourceImage: sourceImage,
             author: author,
             date: date,
             url: url,
@@ -713,18 +771,20 @@ class $$NewsTableTableTableManager extends RootTableManager<
             required String title,
             required String description,
             required String image,
+            required String sourceImage,
             required String author,
             required String date,
             required String url,
             required String category,
-            Value<bool> isLiked = const Value.absent(),
-            Value<bool> isBookmarked = const Value.absent(),
+            required bool isLiked,
+            required bool isBookmarked,
           }) =>
               NewsTableCompanion.insert(
             id: id,
             title: title,
             description: description,
             image: image,
+            sourceImage: sourceImage,
             author: author,
             date: date,
             url: url,

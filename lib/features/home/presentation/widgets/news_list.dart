@@ -15,8 +15,7 @@ class NewsList extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if (state is HomeFailed) {
-          snackBar(
-              context, 'Please check you internet connection and try again.');
+          snackBar(context, 'Something went wrong, please try again later.');
         }
       },
       builder: (context, state) {
@@ -39,7 +38,7 @@ class NewsList extends StatelessWidget {
         } else if (state is HomeFailed) {
           return Center(
               child: Text(
-            state.message,
+            'Something went wrong, try again later.',
             style: Styles.semiBold20.copyWith(color: AppColors.primaryColor),
           ));
         } else {

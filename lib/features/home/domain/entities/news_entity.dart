@@ -2,6 +2,7 @@ class NewsEntity {
   final String articleTitle;
   final String articleDescription;
   final String image;
+  final String articleSourceImage;
   final String creationDate;
   final String author;
   final String url;
@@ -13,6 +14,7 @@ class NewsEntity {
       {required this.articleTitle,
       required this.articleDescription,
       required this.image,
+      required this.articleSourceImage,
       required this.creationDate,
       required this.author,
       required this.url,

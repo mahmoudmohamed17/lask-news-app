@@ -22,10 +22,11 @@ class AppDatabase extends _$AppDatabase {
               author: news.author,
               url: news.url,
               image: news.image,
+              sourceImage: news.articleSourceImage,
               date: news.creationDate,
               category: news.articleCategory,
-              isLiked: Value(news.isLiked),
-              isBookmarked: Value(news.isBookmarked),
+              isLiked: news.isLiked,
+              isBookmarked: news.isBookmarked,
             )),
       );
     });
@@ -40,6 +41,7 @@ class AppDatabase extends _$AppDatabase {
             articleTitle: item.title,
             articleDescription: item.description,
             image: item.image,
+            articleSourceImage: item.sourceImage,
             creationDate: item.date,
             author: item.author,
             url: item.url,

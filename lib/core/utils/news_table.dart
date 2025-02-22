@@ -5,6 +5,7 @@ class NewsTable extends Table {
   TextColumn get title => text()();
   TextColumn get description => text()();
   TextColumn get image => text()();
+  TextColumn get sourceImage => text()();
   TextColumn get author => text()();
   TextColumn get date => text()();
   TextColumn get url => text()();
