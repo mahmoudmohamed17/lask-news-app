@@ -12,8 +12,8 @@ class BottomNavBarActions extends StatelessWidget {
     return Row(
       spacing: 24,
       children: [
-        BottomNavBarItem(icon: FontAwesomeIcons.handsClapping, onTap: () {}),
-        BottomNavBarItem(icon: FontAwesomeIcons.bookmark, onTap: () {}),
+        BottomNavBarItem(icon: FontAwesomeIcons.solidHeart, onTap: () {}),
+        BottomNavBarItem(icon: FontAwesomeIcons.solidBookmark, onTap: () {}),
         GestureDetector(
           onTap: () {},
           child: SvgPicture.asset(

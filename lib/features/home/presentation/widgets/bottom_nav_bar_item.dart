@@ -24,7 +24,7 @@ class _BottomNavBarItemState extends State<BottomNavBarItem> {
       child: Icon(
         widget.icon,
         size: 20,
-        color: _isActive ? AppColors.primaryColor : Colors.black,
+        color: _isActive ? AppColors.primaryColor : Colors.grey[300]!,
       ),
     );
   }

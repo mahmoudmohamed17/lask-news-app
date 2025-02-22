@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/funcs/convert_news_entity_date.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
+import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/spaces.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
@@ -18,17 +19,19 @@ class NewsDetailsViewBody extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: CachedNetworkImage(
-            imageUrl: newsEntity.image,
-            errorWidget: (context, url, error) => Icon(
-              FontAwesomeIcons.triangleExclamation,
-              color: Colors.red,
-            ),
-            placeholder: (context, url) => Center(
-              child: CircularProgressIndicator(),
-            ),
-            fit: BoxFit.fill,
-          ),
+          child: newsEntity.image.isNotEmpty
+              ? CachedNetworkImage(
+                  imageUrl: newsEntity.image,
+                  errorWidget: (context, url, error) => Icon(
+                    FontAwesomeIcons.triangleExclamation,
+                    color: Colors.red,
+                  ),
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  fit: BoxFit.fill,
+                )
+              : Image.asset(Assets.imagesSplash, fit: BoxFit.fill),
         ),
         // Note: The CustomScrollView is actaully filling the whole screen
         CustomScrollView(
@@ -61,18 +64,10 @@ class NewsDetailsViewBody extends StatelessWidget {
                     Row(
                       spacing: 8,
                       children: [
-                        Container(
-                          decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                  side:
-                                      BorderSide(color: Colors.black, width: 1),
-                                  borderRadius: BorderRadius.circular(100))),
-                          padding: EdgeInsets.all(2),
-                          child: CachedNetworkImage(
-                            imageUrl: newsEntity.articleSourceImage,
-                            height: 28,
-                            width: 28,
-                          ),
+                        CachedNetworkImage(
+                          imageUrl: newsEntity.articleSourceImage,
+                          height: 28,
+                          width: 28,
                         ),
                         Flexible(
                           child: Text(

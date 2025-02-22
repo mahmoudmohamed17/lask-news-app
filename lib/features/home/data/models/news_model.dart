@@ -57,10 +57,10 @@ class NewsModel extends NewsEntity {
   }) : super(
             articleTitle: title ?? 'NO TITLE',
             articleDescription: description ?? 'NO DESCRIPTION',
-            image: imageUrl ?? defaultArticleImage,
+            image: imageUrl ?? '',
             articleSourceImage: sourceIcon ?? defaultArticleSourceImage,
             creationDate: pubDate ?? 'NO DATE',
-            author: creator?.first ?? 'NO AUTHOR',
+            author: sourceName ?? 'NO AUTHOR',
             url: link ?? '',
             articleCategory: category?.first ?? 'NO CATEGORY');
 

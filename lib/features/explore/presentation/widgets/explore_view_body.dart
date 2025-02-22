@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/all_news_page_view.dart';
-import 'package:lask_news_app/features/explore/presentation/widgets/art_news_page_view.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/business_news_page_view.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/economy_news_page_view.dart';
 import 'package:lask_news_app/features/explore/presentation/widgets/health_news_page_view.dart';
@@ -101,7 +100,6 @@ class _ExploreViewBodyState extends State<ExploreViewBody> {
                 EconomyNewsPageView(),
                 HealthNewsPageView(),
                 PoliticsNewsPageView(),
-                ArtNewsPageView(),
               ],
             ),
           ),

@@ -5,7 +5,7 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.homeRepo) : super(HomeInitial()) {
-    getNews();
+    getNews(category: 'sports,business,entertainment,');
   }
   final HomeRepo homeRepo;
 

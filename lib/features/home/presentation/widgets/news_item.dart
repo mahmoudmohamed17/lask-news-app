@@ -6,6 +6,7 @@ import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/extensions/navigation_extension.dart';
 import 'package:lask_news_app/core/funcs/capitalize_first_letter.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
+import 'package:lask_news_app/core/utils/assets.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
 import 'package:lask_news_app/features/home/domain/entities/news_entity.dart';
 import 'package:lask_news_app/features/home/presentation/views/news_details_view.dart';
@@ -36,17 +37,19 @@ class NewsItem extends StatelessWidget {
               height: 270,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(newsItemBorder),
-                child: CachedNetworkImage(
-                  imageUrl: newsEntity.image,
-                  errorWidget: (context, url, error) => Icon(
-                    FontAwesomeIcons.triangleExclamation,
-                    color: Colors.red,
-                  ),
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  fit: BoxFit.cover,
-                ),
+                child: newsEntity.image.isNotEmpty
+                    ? CachedNetworkImage(
+                        imageUrl: newsEntity.image,
+                        errorWidget: (context, url, error) => Icon(
+                          FontAwesomeIcons.triangleExclamation,
+                          color: Colors.red,
+                        ),
+                        placeholder: (context, url) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        fit: BoxFit.fill,
+                      )
+                    : Image.asset(Assets.imagesSplash, fit: BoxFit.fill),
               ),
             ),
             FractionallySizedBox(
