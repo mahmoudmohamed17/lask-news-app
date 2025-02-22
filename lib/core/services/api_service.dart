@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/utils/api_keys.dart';
 
 class ApiService {
@@ -7,7 +8,7 @@ class ApiService {
   final Dio dio;
   ApiService({required this.dio});
 
-  Future<Map<String, dynamic>> getNews({String category = 'top'}) async {
+  Future<Map<String, dynamic>> getNews({String category = defaultApiRequestParam}) async {
     Response response = await dio.get(
         '$_baseUrl?apiKey=${ApiKeys.newsApiKey}&category=$category$constParams');
     return response.data;

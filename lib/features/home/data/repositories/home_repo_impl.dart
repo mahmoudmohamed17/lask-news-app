@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:lask_news_app/constanst.dart';
 import 'package:lask_news_app/core/errors/api_server_failure.dart';
 import 'package:lask_news_app/core/errors/failure.dart';
 import 'package:lask_news_app/features/home/data/datasources/home_local_data_source.dart';
@@ -17,7 +18,7 @@ class HomeRepoImpl extends HomeRepo {
 
   @override
   Future<Either<Failure, List<NewsEntity>>> getNews(
-      {String category = 'top'}) async {
+      {String category = defaultApiRequestParam}) async {
     List<NewsEntity> result = [];
     try {
       result = await localDataSource.getNews(category: category);

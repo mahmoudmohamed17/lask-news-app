@@ -113,8 +113,7 @@ final List<String> _searchTapLables = [
   'All',
   'Sports',
   'Business',
-  'Economy',
+  'Entertainment',
   'Health',
   'Politics',
-  'Art',
 ];

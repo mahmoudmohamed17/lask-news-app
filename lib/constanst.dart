@@ -11,3 +11,5 @@ const savedImage = 'saved_image';
 const isOnboardingSeen = 'is_onboarding_seen';
 const isUserAuthenticated = 'is_user_authenticated';
 const defaultArticleSourceImage = 'assets/images/writter_image.png';
+const apiRequestParams = 'sports,business,entertainment,politics,health';
+const defaultApiRequestParam = 'top';
