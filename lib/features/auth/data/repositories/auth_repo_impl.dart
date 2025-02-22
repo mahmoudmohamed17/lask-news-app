@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:lask_news_app/core/errors/custom_exception.dart';
 import 'package:lask_news_app/core/errors/failure.dart';
+import 'package:lask_news_app/core/errors/firebase_server_failure.dart';
 import 'package:lask_news_app/core/services/firebase_auth_service.dart';
 import 'package:lask_news_app/features/auth/data/models/user_model.dart';
 import 'package:lask_news_app/features/auth/domain/entities/user_entity.dart';
