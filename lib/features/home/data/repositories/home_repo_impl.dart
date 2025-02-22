@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:lask_news_app/core/errors/api_server_failure.dart';
 import 'package:lask_news_app/core/errors/failure.dart';
 import 'package:lask_news_app/features/home/data/datasources/local_data_source.dart';
 import 'package:lask_news_app/features/home/data/datasources/remote_data_source.dart';
@@ -21,10 +23,10 @@ class HomeRepoImpl extends HomeRepo {
         result = await remoteDataSource.getNews(category: category);
       }
       return right(result);
+    } on DioException catch (e) {
+      return left(ApiServerFailure.fromDioException(e));
     } catch (e) {
-      return left(ApiServerFailure(
-          message:
-              'An error occured while handling the data, please try again later.'));
+      return left(ApiServerFailure(message: e.toString()));
     }
   }
 }
