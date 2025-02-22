@@ -19,6 +19,7 @@ class NewsDetailsViewBody extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
+          top: -450,
           child: newsEntity.image.isNotEmpty
               ? CachedNetworkImage(
                   imageUrl: newsEntity.image,
@@ -31,7 +32,10 @@ class NewsDetailsViewBody extends StatelessWidget {
                   ),
                   fit: BoxFit.fill,
                 )
-              : Image.asset(Assets.imagesSplash, fit: BoxFit.fill),
+              : Image.asset(
+                  Assets.imagesSplash,
+                  fit: BoxFit.fill,
+                ),
         ),
         // Note: The CustomScrollView is actaully filling the whole screen
         CustomScrollView(
