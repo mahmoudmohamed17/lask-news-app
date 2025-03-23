@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lask_news_app/core/extensions/context_extension.dart';
 import 'package:lask_news_app/core/utils/app_colors.dart';
 import 'package:lask_news_app/core/utils/snack_bar.dart';
 import 'package:lask_news_app/core/utils/styles.dart';
